@@ -32,7 +32,12 @@ func main() {
 	router.POST("/albums", addAlbum)
 
 	// This sets the router to start listening on the port I specified
-	router.Run("localhost:8080")
+	routerRun(router, "localhost:8080")
+
+}
+
+func routerRun(r *gin.Engine, s string) {
+	r.Run(s)
 }
 
 // getAlbums responds with the list of all albums as JSON.
