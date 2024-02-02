@@ -19,6 +19,7 @@ func TestRouterRun(t *testing.T) {
 		router.GET("/albums", getAlbums)
 		router.GET("/albums/:id", getAlbumByID)
 		router.POST("/albums", addAlbum)
+		router.POST("/album", addAlbum)
 		routerRun(r, "localhost:8080")
 	}(router)
 }

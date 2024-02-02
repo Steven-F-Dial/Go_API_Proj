@@ -30,9 +30,10 @@ func main() {
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbumByID)
 	router.POST("/albums", addAlbum)
+	router.GET("/secretAPI", getNextID)
 
 	// This sets the router to start listening on the port I specified
-	routerRun(router, "localhost:8080")
+	routerRun(router, "0.0.0.0:9090")
 
 }
 
@@ -72,4 +73,8 @@ func getAlbumByID(c *gin.Context) {
 		}
 	}
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+}
+
+func getNextID(c *gin.Context) {
+	c.JSON(http.StatusOK, len(albums)+1)
 }
